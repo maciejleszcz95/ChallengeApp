@@ -17,9 +17,3 @@ else if (sex == 'm' && age < 18)
 {
     Console.WriteLine("Niepelnoletni mezczyzna");
 }
-// czwarty przypadek
-else
-{
-    ;
-    // program nic nie wyswietla (pusta instrukcja)
-}
