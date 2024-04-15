@@ -1,19 +1,30 @@
-﻿string name = "Maciej"; // imie 
-char sex = 'm'; // m - mezczyzna, f - kobieta
-ushort age = 29;
+﻿/*
+Zadanie domowe dzien 5
+Program zliczajacy wystapienia cyfr w liczbie "number"
+Wyswietlenie zawartosci w sposob zrozumialy dla uzytkownika wedlug wzory pokazanego ponizej ponizej
+0 => 0
+1 => 0
+.
+.
+9 => 0
+ 
+ */
 
-// pierwsza instrukcja warunkowa
-if (sex == 'f' && age < 30)
+int number = 4566; // liczba wejsciowa
+string numberInString = number.ToString(); // rzutowanie liczby na tekst
+char[] letters = numberInString.ToCharArray(); // zamiana tekstu na ciag znakow
+int[] numbers = new int[10]; // tablica wystapienia kolejno liczb 0, 1, 2 .. 9
+
+// zliczanie wystapien cyfr w podanej liczbie
+foreach (char letter in letters)
 {
-    Console.WriteLine("Kobieta ponizej 30 lat");
+    numbers[letter - '0']++;
 }
-// druga instrukcja warunkowa
-else if (name == "Ewa" && age == 30)
+
+// wyswietlanie wystapien cyfr w liczbie w postaci zrozumialej dla uzytkownika
+int i = 0;
+foreach (int x in numbers)
 {
-    Console.WriteLine("Ewa, lat 30");
-}
-// trzecia instrukcja warunkowa
-else if (sex == 'm' && age < 18)
-{
-    Console.WriteLine("Niepelnoletni mezczyzna");
+    Console.WriteLine($"{i} => {x}");
+    i++;
 }
