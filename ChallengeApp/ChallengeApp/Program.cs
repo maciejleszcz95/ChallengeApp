@@ -6,43 +6,43 @@ Zadanie domowe dzien 6
  */
 using ChallengeApp;
 
-int ocena = 0, 
-    najwyzszaOcena = 0,
-    indeksPracownika = 0; // indeks przechowujacy numer najlepszego pracownika (z najwyzsza suma ocen)
+int score = 0, 
+    highestScore = 0,
+    employeeIndex = 0; // indeks przechowujacy numer najlepszego pracownika (z najwyzsza suma ocen)
 
 // Tworzenie tablicy pracownikow
-Employee[] pracownik = { new("Jan", "Kowalski", 54), new("Monika", "Stanecka", 23), new("Jacek", "Kupczynski", 45)};
+Employee[] employees = { new("Jan", "Kowalski", 54), new("Monika", "Stanecka", 23), new("Jacek", "Kupczynski", 45)};
 
 // Nadawanie pracownikom ocen
-pracownik[0].AddScore(1);
-pracownik[0].AddScore(7);
-pracownik[0].AddScore(3);
-pracownik[0].AddScore(4);
-pracownik[0].AddScore(8);
+employees[0].AddScore(1);
+employees[0].AddScore(7);
+employees[0].AddScore(3);
+employees[0].AddScore(4);
+employees[0].AddScore(8);
 
-pracownik[1].AddScore(9);
-pracownik[1].AddScore(10);
-pracownik[1].AddScore(1);
-pracownik[1].AddScore(7);
-pracownik[1].AddScore(4);
+employees[1].AddScore(9);
+employees[1].AddScore(10);
+employees[1].AddScore(1);
+employees[1].AddScore(7);
+employees[1].AddScore(4);
 
-pracownik[2].AddScore(5);
-pracownik[2].AddScore(2);
-pracownik[2].AddScore(8);
-pracownik[2].AddScore(10);
-pracownik[2].AddScore(5);
+employees[2].AddScore(5);
+employees[2].AddScore(2);
+employees[2].AddScore(8);
+employees[2].AddScore(10);
+employees[2].AddScore(5);
 
 // Wyszukiwanie pracownika z najwieksza suma ocen
-for (int i = 0; i < pracownik.Length; i++)
+for (int i = 0; i < employees.Length; i++)
 {
-    ocena = pracownik[i].Result;
-    if (ocena > najwyzszaOcena)
+    score = employees[i].Result;
+    if (score > highestScore)
     {
-        najwyzszaOcena = ocena;
-        indeksPracownika = i;
+        highestScore = score;
+        employeeIndex = i;
     }
 }
 
 // Wyswietlenie danych i wyniku najlepszego pracownika (z najwieksza liczba sumy ocen)
-Console.WriteLine($"Hurra najlepszym pracownikiem jest {pracownik[indeksPracownika].FirstName} " +
-    $"{pracownik[indeksPracownika].LastName} lat {pracownik[indeksPracownika].Age} z wynikiem {najwyzszaOcena}");
+Console.WriteLine($"Hurra najlepszym pracownikiem jest {employees[employeeIndex].FirstName} " +
+    $"{employees[employeeIndex].LastName} lat {employees[employeeIndex].Age} z wynikiem {highestScore}");
