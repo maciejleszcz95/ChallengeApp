@@ -1,30 +1,48 @@
 ﻿/*
-Zadanie domowe dzien 5
-Program zliczajacy wystapienia cyfr w liczbie "number"
-Wyswietlenie zawartosci w sposob zrozumialy dla uzytkownika wedlug wzory pokazanego ponizej ponizej
-0 => 0
-1 => 0
-.
-.
-9 => 0
- 
+Zadanie domowe dzien 6
+1. Stworz klase Employee, w ktorej przechowasz imie, nazwisko, wiek oraz punkty pracownika w postaci liczb calkowitych
+2. Stworz 3 pracownikow i kazdemu przydziel po 5 ocen z zakresu od 1 do 10
+3. Napisz program, ktory wyszuka pracownika z najwyzsza liczba ocen, a nastepnie wyswietli jego dane oraz wynik 
  */
+using ChallengeApp;
 
-int number = 4566; // liczba wejsciowa
-string numberInString = number.ToString(); // rzutowanie liczby na tekst
-char[] letters = numberInString.ToCharArray(); // zamiana tekstu na ciag znakow
-int[] numbers = new int[10]; // tablica wystapienia kolejno liczb 0, 1, 2 .. 9
+int ocena = 0, 
+    najwyzszaOcena = 0,
+    indeksPracownika = 0; // indeks przechowujacy numer najlepszego pracownika (z najwyzsza suma ocen)
 
-// zliczanie wystapien cyfr w podanej liczbie
-foreach (char letter in letters)
+// Tworzenie tablicy pracownikow
+Employee[] pracownik = { new("Jan", "Kowalski", 54), new("Monika", "Stanecka", 23), new("Jacek", "Kupczynski", 45)};
+
+// Nadawanie pracownikom ocen
+pracownik[0].AddScore(1);
+pracownik[0].AddScore(7);
+pracownik[0].AddScore(3);
+pracownik[0].AddScore(4);
+pracownik[0].AddScore(8);
+
+pracownik[1].AddScore(9);
+pracownik[1].AddScore(10);
+pracownik[1].AddScore(1);
+pracownik[1].AddScore(7);
+pracownik[1].AddScore(4);
+
+pracownik[2].AddScore(5);
+pracownik[2].AddScore(2);
+pracownik[2].AddScore(8);
+pracownik[2].AddScore(10);
+pracownik[2].AddScore(5);
+
+// Wyszukiwanie pracownika z najwieksza suma ocen
+for (int i = 0; i < pracownik.Length; i++)
 {
-    numbers[letter - '0']++;
+    ocena = pracownik[i].Result;
+    if (ocena > najwyzszaOcena)
+    {
+        najwyzszaOcena = ocena;
+        indeksPracownika = i;
+    }
 }
 
-// wyswietlanie wystapien cyfr w liczbie w postaci zrozumialej dla uzytkownika
-int i = 0;
-foreach (int x in numbers)
-{
-    Console.WriteLine($"{i} => {x}");
-    i++;
-}
+// Wyswietlenie danych i wyniku najlepszego pracownika (z najwieksza liczba sumy ocen)
+Console.WriteLine($"Hurra najlepszym pracownikiem jest {pracownik[indeksPracownika].FirstName} " +
+    $"{pracownik[indeksPracownika].LastName} lat {pracownik[indeksPracownika].Age} z wynikiem {najwyzszaOcena}");
