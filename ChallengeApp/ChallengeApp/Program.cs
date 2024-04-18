@@ -1,48 +1,24 @@
 ﻿/*
-Zadanie domowe dzien 6
-1. Stworz klase Employee, w ktorej przechowasz imie, nazwisko, wiek oraz punkty pracownika w postaci liczb calkowitych
-2. Stworz 3 pracownikow i kazdemu przydziel po 5 ocen z zakresu od 1 do 10
-3. Napisz program, ktory wyszuka pracownika z najwyzsza liczba ocen, a nastepnie wyswietli jego dane oraz wynik 
+Zadanie domowe dzien 9
+Program, ktory utworzy obiekt employee, ktoremu zostana przydzielone oceny z zakresu od 0 do 100,
+a nastepnie sporzadzi i wyswietli statystyki ocen pracownika (ocena najwyzsza, najnizsza, srednia ocen).
  */
+
 using ChallengeApp;
 
-int score = 0, 
-    highestScore = 0,
-    employeeIndex = 0; // indeks przechowujacy numer najlepszego pracownika (z najwyzsza suma ocen)
+var employee = new Employee("Adam", "Kamizelich"); // Tworzenie pracownika Adam Kamizelich
 
-// Tworzenie tablicy pracownikow
-Employee[] employees = { new("Jan", "Kowalski", 54), new("Monika", "Stanecka", 23), new("Jacek", "Kupczynski", 45)};
+// Dodawanie ocen dla pracownika
+employee.AddGrade(13.57f);
+employee.AddGrade(75.98f);
+employee.AddGrade(5.89f);
+employee.AddGrade(99.45f);
+employee.AddGrade(98.1f);
+employee.AddGrade(100);
 
-// Nadawanie pracownikom ocen
-employees[0].AddScore(1);
-employees[0].AddScore(7);
-employees[0].AddScore(3);
-employees[0].AddScore(4);
-employees[0].AddScore(8);
-
-employees[1].AddScore(9);
-employees[1].AddScore(10);
-employees[1].AddScore(1);
-employees[1].AddScore(7);
-employees[1].AddScore(4);
-
-employees[2].AddScore(5);
-employees[2].AddScore(2);
-employees[2].AddScore(8);
-employees[2].AddScore(10);
-employees[2].AddScore(5);
-
-// Wyszukiwanie pracownika z najwieksza suma ocen
-for (int i = 0; i < employees.Length; i++)
-{
-    score = employees[i].Result;
-    if (score > highestScore)
-    {
-        highestScore = score;
-        employeeIndex = i;
-    }
-}
-
-// Wyswietlenie danych i wyniku najlepszego pracownika (z najwieksza liczba sumy ocen)
-Console.WriteLine($"Hurra najlepszym pracownikiem jest {employees[employeeIndex].FirstName} " +
-    $"{employees[employeeIndex].LastName} lat {employees[employeeIndex].Age} z wynikiem {highestScore}");
+// Wyswietlanie raportu w postaci: imienia i nazwiska pracownika, jego oceny maksymalnej, minimalnej oraz sredniej wszystkich jego ocen
+var statistics = employee.GetStatistics();
+Console.WriteLine($"Pracownik: {employee.Name} {employee.Surname}");
+Console.WriteLine($"Srednia ocen: {statistics.Average:N2}");
+Console.WriteLine($"Najnizsza ocena: {statistics.Min:N2}");
+Console.WriteLine($"Najwyzsza ocena: {statistics.Max:N2}");
