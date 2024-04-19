@@ -8,13 +8,19 @@ using ChallengeApp;
 
 var employee = new Employee("Adam", "Kamizelich"); // Tworzenie pracownika Adam Kamizelich
 
+// Tablice ocen pracownika
+float[] ocenyFloat = { 10.34f, 40.5f, 50, 80 };
+string[] ocenyString = { "45", "6000", "23", "Adam" };
+
+
 // Dodawanie ocen dla pracownika
-employee.AddGrade(13.57f);
-employee.AddGrade(75.98f);
-employee.AddGrade(5.89f);
-employee.AddGrade(99.45f);
-employee.AddGrade(98.1f);
-employee.AddGrade(100);
+employee.AddGrade("Adam");
+employee.AddGrade("2000");
+employee.AddGrade(ocenyFloat);
+employee.AddGrade(ocenyString);
+employee.AddGrade("75.98");
+employee.AddGrade((double)5.89f);
+
 
 // Wyswietlanie raportu w postaci: imienia i nazwiska pracownika, jego oceny maksymalnej, minimalnej oraz sredniej wszystkich jego ocen
 var statistics = employee.GetStatistics();

@@ -16,7 +16,55 @@
         
         public void AddGrade(float grade)
         {
-            this.grades.Add(grade);
+            if (grade >= 0 && grade <= 100)
+            {
+                this.grades.Add(grade);
+            }
+            else
+            {
+                Console.WriteLine($"Error: Grade value \"{grade}\" is out of range!");
+            }           
+        }
+        public void AddGrade(int grade)
+        {
+            float value = (float)grade;
+                this.AddGrade(value);
+        }
+        public void AddGrade(long grade)
+        {
+            float value = (float)grade;
+            this.AddGrade(value);
+        }
+        public void AddGrade(double grade)
+        {
+            float value = (float)grade;
+            this.AddGrade(value);
+        }
+        public void AddGrade(float[] grade)
+        {
+            foreach (float gradeItem in grade)
+            {
+                this.AddGrade(gradeItem);
+            }
+        }
+        public void AddGrade(string[] grade)
+        {    
+            foreach (string gradeItem in grade)
+            {
+                this.AddGrade(gradeItem);
+            }
+        }
+
+        public void AddGrade(string grade)
+        {
+            if (float.TryParse(grade, out float result))
+            {
+                this.AddGrade(result);
+            }
+            else
+            {
+                Console.WriteLine($"Error: Value \"{grade}\" is not a float value!");
+            }
         }
 
         public Statistics GetStatistics()
