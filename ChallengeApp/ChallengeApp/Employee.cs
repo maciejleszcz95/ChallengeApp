@@ -13,7 +13,7 @@
         public string Name { get; private set; }
         public string Surname { get; private set; }
         public int Age { get; private set; }
-        
+
         public void AddGrade(float grade)
         {
             if (grade >= 0 && grade <= 100)
@@ -23,12 +23,12 @@
             else
             {
                 Console.WriteLine($"Error: Grade value \"{grade}\" is out of range!");
-            }           
+            }
         }
         public void AddGrade(int grade)
         {
             float value = (float)grade;
-                this.AddGrade(value);
+            this.AddGrade(value);
         }
         public void AddGrade(long grade)
         {
@@ -48,7 +48,7 @@
             }
         }
         public void AddGrade(string[] grade)
-        {    
+        {
             foreach (string gradeItem in grade)
             {
                 this.AddGrade(gradeItem);
@@ -74,7 +74,7 @@
             statistics.Max = float.MinValue;
             statistics.Min = float.MaxValue;
 
-            foreach (var grade in this.grades) 
+            foreach (var grade in this.grades)
             {
                 statistics.Max = Math.Max(statistics.Max, grade);
                 statistics.Min = Math.Min(statistics.Min, grade);
