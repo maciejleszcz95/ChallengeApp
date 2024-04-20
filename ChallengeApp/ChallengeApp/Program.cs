@@ -1,7 +1,6 @@
 ﻿/*
-Zadanie domowe dzien 9
-Program, ktory utworzy obiekt employee, ktoremu zostana przydzielone oceny z zakresu od 0 do 100,
-a nastepnie sporzadzi i wyswietli statystyki ocen pracownika (ocena najwyzsza, najnizsza, srednia ocen).
+Zadanie domowe dzien 11
+Stworz metode GetStatistics() przy uzyciu kazdej z petli
  */
 
 using ChallengeApp;
@@ -12,7 +11,6 @@ var employee = new Employee("Adam", "Kamizelich"); // Tworzenie pracownika Adam 
 float[] ocenyFloat = { 10.34f, 40.5f, 50, 80 };
 string[] ocenyString = { "45", "6000", "23", "Adam" };
 
-
 // Dodawanie ocen dla pracownika
 employee.AddGrade("Adam");
 employee.AddGrade("2000");
@@ -20,11 +18,16 @@ employee.AddGrade(ocenyFloat);
 employee.AddGrade(ocenyString);
 employee.AddGrade("75.98");
 employee.AddGrade((double)5.89f);
-
+var statistics = employee.GetStatistics();
+var statistics1 = employee.GetStatisticsWithForEach();
+var statistics2 = employee.GetStatisticsWithFor();
+var statistics3 = employee.GetStatisticsWithDoWhile();
+var statistics4 = employee.GetStatisticsWithWhile();
 
 // Wyswietlanie raportu w postaci: imienia i nazwiska pracownika, jego oceny maksymalnej, minimalnej oraz sredniej wszystkich jego ocen
-var statistics = employee.GetStatistics();
 Console.WriteLine($"Pracownik: {employee.Name} {employee.Surname}");
-Console.WriteLine($"Srednia ocen: {statistics.Average:N2}");
-Console.WriteLine($"Najnizsza ocena: {statistics.Min:N2}");
-Console.WriteLine($"Najwyzsza ocena: {statistics.Max:N2}");
+Console.WriteLine("Petla: \t\t\tForeach\t\tFor\t\tDo While\tWhile");
+Console.WriteLine("-----------------------------------------------------------------------------");
+Console.WriteLine($"Srednia ocen: \t\t{statistics1.Average:N2}\t\t{statistics2.Average:N2}\t\t{statistics3.Average:N2}\t\t{statistics4.Average:N2}");
+Console.WriteLine($"Najnizsza ocena: \t{statistics1.Min:N2}\t\t{statistics2.Min:N2}\t\t{statistics3.Min:N2}\t\t{statistics4.Min:N2}");
+Console.WriteLine($"Najwyzsza ocena: \t{statistics1.Max:N2}\t\t{statistics2.Max:N2}\t\t{statistics3.Max:N2}\t\t{statistics4.Max:N2}");
