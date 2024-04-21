@@ -1,33 +1,62 @@
 ﻿/*
-Zadanie domowe dzien 11
-Stworz metode GetStatistics() przy uzyciu kazdej z petli
+Zadanie domowe dzien 12 
+Stworz dzialajaca aplikacje do oceny pracownika (jednego)
+Stworz dzialajace testy jednostkowe wraz ze sprawdzeniem liter A/B/C
+Wrzuc dzialajacy kod na gita
  */
 
 using ChallengeApp;
+using System.Diagnostics;
 
-var employee = new Employee("Adam", "Kamizelich"); // Tworzenie pracownika Adam Kamizelich
+// Powitanie
+Console.WriteLine("Witamy w Programie XYZ do oceny Pracownikow");
+Console.WriteLine("============================================\n");
 
-// Tablice ocen pracownika
-float[] ocenyFloat = { 10.34f, 40.5f, 50, 80 };
-string[] ocenyString = { "45", "6000", "23", "Adam" };
+// Tworzenie obiektu oraz zmiennych
+var employee = new Employee();
+bool isNext = false;
 
-// Dodawanie ocen dla pracownika
-employee.AddGrade("Adam");
-employee.AddGrade("2000");
-employee.AddGrade(ocenyFloat);
-employee.AddGrade(ocenyString);
-employee.AddGrade("75.98");
-employee.AddGrade((double)5.89f);
+
+// Obsluga interfejsu uzytkownika
+while (true)
+{
+
+    // Wyswietlenie odpowiedniego komunikatu gdy uzytkownik podaje pierwsza ocene czy kolejne
+    if (isNext)
+    {
+        Console.WriteLine("Podaj kolejna ocene pracownika (albo wprowadz \"q\" aby zakonczyc):");
+    }
+    else
+    {
+        Console.WriteLine("Podaj ocene pracownika:");
+        isNext = true;
+    }
+
+    var input = Console.ReadLine(); // Pobieranie wartosci od uzytkownika
+
+    // Warunek wyjscia z petli
+    if (input == "q")
+    {
+        break;
+    }
+
+    // Jesli input jest jednym znakiem oraz litera
+    if (char.TryParse(input, out char result) && char.IsLetter(result))
+    {
+        employee.AddGrade(result);
+    }
+    else // W innym przypadku input jest string
+    {
+        employee.AddGrade(input);
+    }
+
+}
+
+// Wyswietlanie statystyk
 var statistics = employee.GetStatistics();
-var statistics1 = employee.GetStatisticsWithForEach();
-var statistics2 = employee.GetStatisticsWithFor();
-var statistics3 = employee.GetStatisticsWithDoWhile();
-var statistics4 = employee.GetStatisticsWithWhile();
-
-// Wyswietlanie raportu w postaci: imienia i nazwiska pracownika, jego oceny maksymalnej, minimalnej oraz sredniej wszystkich jego ocen
-Console.WriteLine($"Pracownik: {employee.Name} {employee.Surname}");
-Console.WriteLine("Petla: \t\t\tForeach\t\tFor\t\tDo While\tWhile");
-Console.WriteLine("-----------------------------------------------------------------------------");
-Console.WriteLine($"Srednia ocen: \t\t{statistics1.Average:N2}\t\t{statistics2.Average:N2}\t\t{statistics3.Average:N2}\t\t{statistics4.Average:N2}");
-Console.WriteLine($"Najnizsza ocena: \t{statistics1.Min:N2}\t\t{statistics2.Min:N2}\t\t{statistics3.Min:N2}\t\t{statistics4.Min:N2}");
-Console.WriteLine($"Najwyzsza ocena: \t{statistics1.Max:N2}\t\t{statistics2.Max:N2}\t\t{statistics3.Max:N2}\t\t{statistics4.Max:N2}");
+Console.WriteLine("\nStatystyki ocen pracownika");
+Console.WriteLine("============================================\n");
+Console.WriteLine($"Srednia ocena (litera):\t{statistics.AverageLetter}");
+Console.WriteLine($"Srednia ocena:\t\t{statistics.Average.ToString("N2")}");
+Console.WriteLine($"Najnizsza ocena:\t{statistics.Min.ToString("N2")}");
+Console.WriteLine($"Najwyzsza ocena:\t{statistics.Max.ToString("N2")}");

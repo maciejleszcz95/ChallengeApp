@@ -1,6 +1,6 @@
 ﻿/*
-Zadanie domowe dzien 9
-Testy jednostkowe poprawnosci dzialania klasy Employee oraz modelu danych Statistics
+Zadanie domowe dzien 12
+Dodanie testu jednostkowego sprawdzajacego poprawnosc dodawania ocen zapisanych litera
  */
 
 namespace ChallengeApp.Tests
@@ -67,6 +67,20 @@ namespace ChallengeApp.Tests
 
             // assert
             Assert.That(statistics.Min, Is.EqualTo(4));
+        }
+
+        [Test]
+        public void WhenLetterIsProvided_GradeShouldBeRepresentedAsNumericValue()
+        {
+            // arrange
+            var employee = new Employee("Adam", "Kamizelich");
+            employee.AddGrade('A');
+
+            //act
+            var statistics = employee.GetStatistics();
+
+            // assert
+            Assert.That(statistics.Average, Is.EqualTo(100));
         }
     }
 }
