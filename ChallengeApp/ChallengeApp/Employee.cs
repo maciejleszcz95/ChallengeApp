@@ -36,46 +36,46 @@
         }
         public void AddGrade(char grade)
         {
-            this.AddGrade(char.ToString(grade));
+            switch (grade)
+            {
+                case 'A':
+                case 'a':
+                    this.AddGrade(100f);
+                    break;
+                case 'B':
+                case 'b':
+                    this.AddGrade(80f);
+                    break;
+                case 'C':
+                case 'c':
+                    this.AddGrade(60f);
+                    break;
+                case 'D':
+                case 'd':
+                    this.AddGrade(40f);
+                    break;
+                case 'E':
+                case 'e':
+                    this.AddGrade(20f);
+                    break;
+                default:
+                    Console.WriteLine($"Error: \"{grade}\" is wrong grade letter!");
+                    break;
+            }
         }
         public void AddGrade(string grade)
         {
-            if (char.TryParse(grade, out char resultChar) && char.IsLetter(resultChar))
-            {
-                switch (resultChar)
-                {
-                    case 'A':
-                    case 'a':
-                        this.AddGrade(100f);
-                        break;
-                    case 'B':
-                    case 'b':
-                        this.AddGrade(80f);
-                        break;
-                    case 'C':
-                    case 'c':
-                        this.AddGrade(60f);
-                        break;
-                    case 'D':
-                    case 'd':
-                        this.AddGrade(40f);
-                        break;
-                    case 'E':
-                    case 'e':
-                        this.AddGrade(20f);
-                        break;
-                    default:
-                        Console.WriteLine($"Error: \"{grade}\" is wrong grade letter!");
-                        break;
-                }
-            }
-            else if (float.TryParse(grade, out float resultFloat))
+            if (float.TryParse(grade, out float resultFloat)) 
             {
                 this.AddGrade(resultFloat);
             }
+            else if (char.TryParse(grade, out char resultChar))
+            {
+                this.AddGrade(resultChar);
+            }
             else
             {
-                Console.WriteLine($"Error: Value \"{grade}\" is not a proper value!");
+                Console.WriteLine($"Error: Value \"{grade}\" is not a char letter or float value!");
             }
         }
         public Statistics GetStatistics()
