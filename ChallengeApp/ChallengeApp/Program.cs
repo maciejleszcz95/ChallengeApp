@@ -4,7 +4,6 @@ Stworz dzialajaca aplikacje do oceny pracownika (jednego)
 Stworz dzialajace testy jednostkowe wraz ze sprawdzeniem liter A/B/C
 Wrzuc dzialajacy kod na gita
  */
-
 using ChallengeApp;
 using System.Diagnostics;
 
@@ -16,15 +15,13 @@ Console.WriteLine("============================================\n");
 var employee = new Employee();
 bool isNext = false;
 
-
 // Obsluga interfejsu uzytkownika
 while (true)
 {
-
     // Wyswietlenie odpowiedniego komunikatu gdy uzytkownik podaje pierwsza ocene czy kolejne
     if (isNext)
     {
-        Console.WriteLine("Podaj kolejna ocene pracownika (albo wprowadz \"q\" aby zakonczyc):");
+        Console.WriteLine("Podaj kolejna ocene pracownika (albo wprowadz \'q\' aby zakonczyc):");
     }
     else
     {
@@ -32,24 +29,18 @@ while (true)
         isNext = true;
     }
 
-    var input = Console.ReadLine(); // Pobieranie wartosci od uzytkownika
+    // Pobieranie wartosci od uzytkownika
+    var input = Console.ReadLine();
 
     // Warunek wyjscia z petli
     if (input == "q")
     {
         break;
     }
-
-    // Jesli input jest jednym znakiem oraz litera
-    if (char.TryParse(input, out char result) && char.IsLetter(result))
-    {
-        employee.AddGrade(result);
-    }
-    else // W innym przypadku input jest string
+    else
     {
         employee.AddGrade(input);
     }
-
 }
 
 // Wyswietlanie statystyk

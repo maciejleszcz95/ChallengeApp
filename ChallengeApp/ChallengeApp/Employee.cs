@@ -34,44 +34,44 @@
             float value = (float)grade;
             this.AddGrade(value);
         }
-        public void AddGrade(char grade)
-        {
-            switch (grade)
-            {
-                case 'A':
-                case 'a':
-                    this.AddGrade(100);
-                    break;
-                case 'B':
-                case 'b':
-                    this.AddGrade(80);
-                    break;
-                case 'C':
-                case 'c':
-                    this.AddGrade(60);
-                    break;
-                case 'D':
-                case 'd':
-                    this.AddGrade(40);
-                    break;
-                case 'E':
-                case 'e':
-                    this.AddGrade(20);
-                    break;
-                default:
-                    Console.WriteLine($"Error: \"{grade}\" is wrong grade letter");
-                    break;
-            }
-        }
         public void AddGrade(string grade)
         {
-            if (float.TryParse(grade, out float result))
+            if (char.TryParse(grade, out char resultChar) && char.IsLetter(resultChar))
             {
-                this.AddGrade(result);
+                switch (resultChar)
+                {
+                    case 'A':
+                    case 'a':
+                        this.AddGrade(100f);
+                        break;
+                    case 'B':
+                    case 'b':
+                        this.AddGrade(80f);
+                        break;
+                    case 'C':
+                    case 'c':
+                        this.AddGrade(60f);
+                        break;
+                    case 'D':
+                    case 'd':
+                        this.AddGrade(40f);
+                        break;
+                    case 'E':
+                    case 'e':
+                        this.AddGrade(20f);
+                        break;
+                    default:
+                        Console.WriteLine($"Error: \"{grade}\" is wrong grade letter!");
+                        break;
+                }
+            }
+            else if (float.TryParse(grade, out float resultFloat))
+            {
+                this.AddGrade(resultFloat);
             }
             else
             {
-                Console.WriteLine($"Error: Value \"{grade}\" is not a float value!");
+                Console.WriteLine($"Error: Value \"{grade}\" is not a proper value!");
             }
         }
         public Statistics GetStatistics()
