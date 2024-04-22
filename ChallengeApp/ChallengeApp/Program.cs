@@ -1,11 +1,9 @@
 ﻿/*
-Zadanie domowe dzien 12 
-Stworz dzialajaca aplikacje do oceny pracownika (jednego)
-Stworz dzialajace testy jednostkowe wraz ze sprawdzeniem liter A/B/C
-Wrzuc dzialajacy kod na gita
+Zadanie domowe dzien 13
+Zmien wyswietlanie bledow w klasie Employee z Console.WriteLine na "rzucanie" wyjatkow
+Stworz obsluge wyjatkow w tracje dodawania oceny programie Program.cs
  */
 using ChallengeApp;
-using System.Diagnostics;
 
 // Powitanie
 Console.WriteLine("Witamy w Programie XYZ do oceny Pracownikow");
@@ -37,9 +35,14 @@ while (true)
     {
         break;
     }
-    else
+
+    try
     {
         employee.AddGrade(input);
+    }
+    catch (Exception e)
+    {
+        Console.WriteLine($"Exception catched: {e.Message}");
     }
 }
 

@@ -26,7 +26,7 @@
             }
             else
             {
-                Console.WriteLine($"Error: Grade value \"{grade}\" is out of range!");
+                throw new Exception($"Grade value \"{grade}\" is out of range!");
             }
         }
         public void AddGrade(int grade)
@@ -59,13 +59,12 @@
                     this.AddGrade(20f);
                     break;
                 default:
-                    Console.WriteLine($"Error: \"{grade}\" is wrong grade letter!");
-                    break;
+                    throw new Exception($"\"{grade}\" is wrong grade letter!");
             }
         }
         public void AddGrade(string grade)
         {
-            if (float.TryParse(grade, out float resultFloat)) 
+            if (float.TryParse(grade, out float resultFloat))
             {
                 this.AddGrade(resultFloat);
             }
@@ -75,15 +74,17 @@
             }
             else
             {
-                Console.WriteLine($"Error: Value \"{grade}\" is not a char letter or float value!");
+                throw new Exception($"Value \"{grade}\" is not a char letter or float value!");
             }
         }
         public Statistics GetStatistics()
         {
-            var statistics = new Statistics();
-            statistics.Average = 0;
-            statistics.Max = float.MinValue;
-            statistics.Min = float.MaxValue;
+            var statistics = new Statistics
+            {
+                Average = 0,
+                Max = float.MinValue,
+                Min = float.MaxValue
+            };
 
             foreach (var grade in this.grades)
             {
