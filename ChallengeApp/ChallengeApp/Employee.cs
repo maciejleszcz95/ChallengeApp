@@ -34,6 +34,10 @@
             float value = (float)grade;
             this.AddGrade(value);
         }
+        public void AddGrade(char grade)
+        {
+            this.AddGrade(char.ToString(grade));
+        }
         public void AddGrade(string grade)
         {
             if (char.TryParse(grade, out char resultChar) && char.IsLetter(resultChar))
