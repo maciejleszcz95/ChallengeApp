@@ -1,9 +1,4 @@
-﻿/*
-Zadanie domowe dzien 13
-Zmien wyswietlanie bledow w klasie Employee z Console.WriteLine na "rzucanie" wyjatkow
-Stworz obsluge wyjatkow w tracje dodawania oceny programie Program.cs
- */
-using ChallengeApp;
+﻿using ChallengeApp;
 
 // Powitanie
 Console.WriteLine("Witamy w Programie XYZ do oceny Pracownikow");
