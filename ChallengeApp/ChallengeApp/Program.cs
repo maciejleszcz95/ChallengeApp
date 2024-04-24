@@ -5,7 +5,7 @@ Console.WriteLine("Witamy w Programie XYZ do oceny Pracownikow");
 Console.WriteLine("============================================\n");
 
 // Tworzenie obiektu oraz zmiennych
-var employee = new Employee();
+var employee = new Employee("","");
 bool isNext = false;
 
 // Obsluga interfejsu uzytkownika
