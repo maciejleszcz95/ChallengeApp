@@ -123,7 +123,19 @@
                     this.AddGrade(0f);
                     break;
                 default:
-                    throw new Exception($"\"{grade}\" is wrong grade!");
+                    if (float.TryParse(grade, out float resultFloat))
+                    {
+                        this.AddGrade(resultFloat);
+                    }
+                    else if (char.TryParse(grade, out char resultChar))
+                    {
+                        this.AddGrade(resultChar);
+                    }
+                    else
+                    {
+                        throw new Exception($"Value \"{grade}\" is not a char letter or float value!");
+                    }
+                    break;
             }
         }
 
