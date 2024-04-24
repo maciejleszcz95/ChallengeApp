@@ -33,10 +33,34 @@
 
         public void AddGrade(char grade)
         {
-            throw new NotImplementedException();
+            switch (grade)
+            {
+                case 'A':
+                case 'a':
+                    this.AddGrade(100f);
+                    break;
+                case 'B':
+                case 'b':
+                    this.AddGrade(80f);
+                    break;
+                case 'C':
+                case 'c':
+                    this.AddGrade(60f);
+                    break;
+                case 'D':
+                case 'd':
+                    this.AddGrade(40f);
+                    break;
+                case 'E':
+                case 'e':
+                    this.AddGrade(20f);
+                    break;
+                default:
+                    throw new Exception($"\"{grade}\" is wrong grade letter!");
+            }
         }
 
-        public void AddGrade(string grade)
+            public void AddGrade(string grade)
         {
             switch (grade)
             {
