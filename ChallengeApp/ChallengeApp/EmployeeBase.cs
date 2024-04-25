@@ -23,11 +23,9 @@
                 case 'M': // Male
                 case 'm':
                     return 'M';
-
                 case 'F': // Female
                 case 'f':
                     return 'F';
-
                 default:
                     throw new Exception($"\"{gender}\" is wrong gender value!");
             }
@@ -38,7 +36,6 @@
             {
                 throw new Exception($"Age value \"{age}\" cannot be negative!");
             }
-
             return age;
         }
 
