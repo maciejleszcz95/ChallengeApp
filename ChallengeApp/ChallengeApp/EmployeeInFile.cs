@@ -1,6 +1,4 @@
-﻿using System.Diagnostics;
-
-namespace ChallengeApp
+﻿namespace ChallengeApp
 {
     public class EmployeeInFile : EmployeeBase
     {
