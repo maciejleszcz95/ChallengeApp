@@ -4,6 +4,8 @@
     {
         string Name { get; }
         string Surname { get; }
+        char Gender { get;  }
+        int Age { get; }
 
         void AddGrade(float grade);
         void AddGrade(int grade);
