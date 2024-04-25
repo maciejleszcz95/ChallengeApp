@@ -5,7 +5,7 @@ Console.WriteLine("Witamy w Programie XYZ do oceny Pracownikow");
 Console.WriteLine("============================================\n");
 
 // Tworzenie obiektu oraz zmiennych
-var employee = new Employee("","");
+var employee = new EmployeeInFile("Maciej","Leszczynski",'M',29);
 bool isNext = false;
 
 // Obsluga interfejsu uzytkownika
@@ -14,11 +14,11 @@ while (true)
     // Wyswietlenie odpowiedniego komunikatu gdy uzytkownik podaje pierwsza ocene czy kolejne
     if (isNext)
     {
-        Console.WriteLine("Podaj kolejna ocene pracownika (albo wprowadz \'q\' aby zakonczyc):");
+        Console.WriteLine("Podaj kolejna ocene pracownika (albo wprowadz \'q\' aby wyswietlic statystyki):");
     }
     else
     {
-        Console.WriteLine("Podaj ocene pracownika:");
+        Console.WriteLine("Podaj ocene pracownika (albo wprowadz \'q\' aby wyswietlic statystyki):");
         isNext = true;
     }
 
