@@ -1,9 +1,4 @@
-﻿/*
-Zadanie domowe dzien 12
-Dodanie testu jednostkowego sprawdzajacego poprawnosc dodawania ocen zapisanych litera
- */
-
-namespace ChallengeApp.Tests
+﻿namespace ChallengeApp.Tests
 {
     public class EmployeeTests
     {
@@ -12,7 +7,7 @@ namespace ChallengeApp.Tests
         public void SettingNameAndSurname_ShouldReturnNameAndSurname()
         {
             // arrange
-            var employee = new Employee("Adam", "Kamizelich");
+            var employee = new EmployeeInMemory("Adam", "Kamizelich", 'm', 0);
 
             // assert
             Assert.That(employee.Name, Is.EqualTo("Adam"));
@@ -22,7 +17,7 @@ namespace ChallengeApp.Tests
         public void GettingStatistics_ShouldReturnCorrectAverage()
         {
             // arrange
-            var employee = new Employee("Adam", "Kamizelich");
+            var employee = new EmployeeInMemory("Adam", "Kamizelich", 'm', 0);
             employee.AddGrade(10);
             employee.AddGrade(4);
             employee.AddGrade(6);
@@ -39,7 +34,7 @@ namespace ChallengeApp.Tests
         public void GettingStatistics_ShouldReturnCorrectMaximumValue()
         {
             // arrange
-            var employee = new Employee("Adam", "Kamizelich");
+            var employee = new EmployeeInMemory("Adam", "Kamizelich", 'm', 0);
             employee.AddGrade(10);
             employee.AddGrade(4);
             employee.AddGrade(6);
@@ -56,7 +51,7 @@ namespace ChallengeApp.Tests
         public void GettingStatistics_ShouldReturnCorrectMinimumValue()
         {
             // arrange
-            var employee = new Employee("Adam", "Kamizelich");
+            var employee = new EmployeeInMemory("Adam", "Kamizelich", 'm', 0);
             employee.AddGrade(10);
             employee.AddGrade(4);
             employee.AddGrade(6);
@@ -73,7 +68,7 @@ namespace ChallengeApp.Tests
         public void WhenLetterIsProvided_GradeShouldBeRepresentedAsNumericValue()
         {
             // arrange
-            var employee = new Employee("Adam", "Kamizelich");
+            var employee = new EmployeeInMemory("Adam", "Kamizelich", 'm', 0);
             employee.AddGrade('A');
 
             //act

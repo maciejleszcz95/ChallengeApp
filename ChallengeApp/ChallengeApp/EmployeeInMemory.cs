@@ -1,6 +1,6 @@
 ﻿namespace ChallengeApp
 {
-    internal class EmployeeInMemory : EmployeeBase
+    public class EmployeeInMemory : EmployeeBase
     {
         private List<float> grades = new List<float>();
 
