@@ -5,8 +5,15 @@ Console.WriteLine("Witamy w Programie XYZ do oceny Pracownikow");
 Console.WriteLine("============================================\n");
 
 // Tworzenie obiektu oraz zmiennych
-var employee = new EmployeeInFile("Maciej","Leszczynski",'M',29);
+var employee = new EmployeeInMemory("Maciej", "Leszczynski", 'M', 29);
 bool isNext = false;
+
+employee.GradeAdded += EmployeeGradeAdded;
+
+void EmployeeGradeAdded(object sender, EventArgs args)
+{
+    Console.WriteLine("Dodano nowa ocene");
+}
 
 // Obsluga interfejsu uzytkownika
 while (true)

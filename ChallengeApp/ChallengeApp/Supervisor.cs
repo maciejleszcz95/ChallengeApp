@@ -14,6 +14,10 @@
 
         public string Surname { get; private set; }
 
+        public char Gender => throw new NotImplementedException();
+
+        public int Age => throw new NotImplementedException();
+
         public void AddGrade(float grade)
         {
             if (grade >= 0 && grade <= 100)

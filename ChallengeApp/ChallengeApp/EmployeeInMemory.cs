@@ -2,6 +2,8 @@
 {
     public class EmployeeInMemory : EmployeeBase
     {
+        public override event GradeAddedDelegate GradeAdded;
+
         private List<float> grades = new List<float>();
 
         public EmployeeInMemory(string name, string surname, char gender, int age)
@@ -14,6 +16,11 @@
             if (grade >= 0 && grade <= 100)
             {
                 this.grades.Add(grade);
+
+                if (GradeAdded != null)
+                {
+                    GradeAdded(this, new EventArgs());
+                }
             }
             else
             {
