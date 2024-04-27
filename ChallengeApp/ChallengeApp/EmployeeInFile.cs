@@ -19,7 +19,7 @@
                 {
                     writer.WriteLine(grade);
                 }
-                
+
                 if (GradeAdded != null)
                 {
                     GradeAdded(this, new EventArgs());
@@ -33,27 +33,18 @@
 
         public override Statistics GetStatistics()
         {
-            var result = new Statistics()
-            {
-                Average = 0,
-                Max = float.MinValue,
-                Min = float.MaxValue
-            };
+            var result = new Statistics();
 
             if (File.Exists(fileName))
             {
                 using (var reader = File.OpenText(fileName))
                 {
-                    int count = 0;
                     var line = reader.ReadLine();
                     while (line != null)
                     {
                         if (float.TryParse(line, out float number))
                         {
-                            result.Max = Math.Max(result.Max, number);
-                            result.Min = Math.Min(result.Min, number);
-                            result.Average += number;
-                            count++;
+                            result.AddGrade(number);
                             line = reader.ReadLine();
                         }
                         else
@@ -61,27 +52,7 @@
                             throw new Exception($"Value \"{line}\" is not a float value!");
                         }
                     }
-                    result.Average /= count;
                 }
-            }
-
-            switch (result.Average)
-            {
-                case var average when average >= 80:
-                    result.AverageLetter = 'A';
-                    break;
-                case var average when average >= 60:
-                    result.AverageLetter = 'B';
-                    break;
-                case var average when average >= 40:
-                    result.AverageLetter = 'C';
-                    break;
-                case var average when average >= 20:
-                    result.AverageLetter = 'D';
-                    break;
-                default:
-                    result.AverageLetter = 'E';
-                    break;
             }
 
             return result;
